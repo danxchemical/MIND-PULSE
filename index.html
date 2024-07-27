@@ -9,20 +9,41 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 </head>
+
+<style>
+            .rating .heart {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #ccc; /* Color gris para los círculos */
+            display: inline-block;
+            cursor: pointer;
+            margin-right: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .rating .heart:hover,
+        .rating .heart.selected {
+            background-color: #ff6f61; /* Color para círculos seleccionados */
+        }
+</style>
+
 <body>
 
     <h2>Test</h2>
+
+    <p>El siguiente test emocional nos ayudará a conocerte mejor, teniendo  en cuenta que muy a la izquierda es estar en desacuerdo con la pregunta y más a la derecha es estar de acuerdo con la pregunta.</p>
 
     <div class="question-container">
         <center
         <div class="question">
             <p class="form-group">¿Te sientes realmente afectado cuando algo ocurre de forma inesperada?</p>
             <div class="rating" data-question="5">
-                <span class="heart" data-value="1">&#9829;</span>
-                <span class="heart" data-value="2">&#9829;</span>
-                <span class="heart" data-value="3">&#9829;</span>
-                <span class="heart" data-value="4">&#9829;</span>
-                <span class="heart" data-value="5">&#9829;</span>
+                <span class="heart" data-value="1"></span>
+                <span class="heart" data-value="2"></span>
+                <span class="heart" data-value="3"></span>
+                <span class="heart" data-value="4"></span>
+                <span class="heart" data-value="5"></span>
             </div>
         </div>
     </div>
@@ -32,11 +53,11 @@
         <div class="question">
             <p class="form-group">¿Manejas mal los pequeños problemas irritantes de tu vida?</p>
             <div class="rating" data-question="6">
-                <span class="heart" data-value="1">&#9829;</span>
-                <span class="heart" data-value="2">&#9829;</span>
-                <span class="heart" data-value="3">&#9829;</span>
-                <span class="heart" data-value="4">&#9829;</span>
-                <span class="heart" data-value="5">&#9829;</span>
+                <span class="heart" data-value="1"></span>
+                <span class="heart" data-value="2"></span>
+                <span class="heart" data-value="3"></span>
+                <span class="heart" data-value="4"></span>
+                <span class="heart" data-value="5"></span>
             </div>
         </div>
     </div>
@@ -46,11 +67,11 @@
         <div class="question">
             <p class="form-group">¿Sientes que hay muchas cosas fuera de tu control y te afecta no poder hacer nada al respecto?</p>
             <div class="rating" data-question="7">
-                <span class="heart" data-value="1">&#9829;</span>
-                <span class="heart" data-value="2">&#9829;</span>
-                <span class="heart" data-value="3">&#9829;</span>
-                <span class="heart" data-value="4">&#9829;</span>
-                <span class="heart" data-value="5">&#9829;</span>
+                <span class="heart" data-value="1"></span>
+                <span class="heart" data-value="2"></span>
+                <span class="heart" data-value="3"></span>
+                <span class="heart" data-value="4"></span>
+                <span class="heart" data-value="5"></span>
             </div>
         </div>
     </div>
@@ -60,11 +81,11 @@
         <div class="question">
             <p class="form-group">¿Sientes que las dificultades se te acumulan tanto que no eres capaz de superarlo?</p>
             <div class="rating" data-question="8">
-                <span class="heart" data-value="1">&#9829;</span>
-                <span class="heart" data-value="2">&#9829;</span>
-                <span class="heart" data-value="3">&#9829;</span>
-                <span class="heart" data-value="4">&#9829;</span>
-                <span class="heart" data-value="5">&#9829;</span>
+                <span class="heart" data-value="1"></span>
+                <span class="heart" data-value="2"></span>
+                <span class="heart" data-value="3"></span>
+                <span class="heart" data-value="4"></span>
+                <span class="heart" data-value="5"></span>
             </div>
         </div>
     </div>
@@ -74,11 +95,11 @@
         <div class="question">
             <p class="form-group">¿Frecuentemente has sentido nerviosismo y estrés?</p>
             <div class="rating" data-question="9">
-                <span class="heart" data-value="1">&#9829;</span>
-                <span class="heart" data-value="2">&#9829;</span>
-                <span class="heart" data-value="3">&#9829;</span>
-                <span class="heart" data-value="4">&#9829;</span>
-                <span class="heart" data-value="5">&#9829;</span>
+                <span class="heart" data-value="1"></span>
+                <span class="heart" data-value="2"></span>
+                <span class="heart" data-value="3"></span>
+                <span class="heart" data-value="4"></span>
+                <span class="heart" data-value="5"></span>
             </div>
         </div>
     </div>
@@ -88,15 +109,14 @@
         <div class="question">
             <p class="form-group">¿Sientes que las cosas están saliendo mal para ti?</p>
             <div class="rating" data-question="10">
-                <span class="heart" data-value="1">&#9829;</span>
-                <span class="heart" data-value="2">&#9829;</span>
-                <span class="heart" data-value="3">&#9829;</span>
-                <span class="heart" data-value="4">&#9829;</span>
-                <span class="heart" data-value="5">&#9829;</span>
+                <span class="heart" data-value="1"></span>
+                <span class="heart" data-value="2"></span>
+                <span class="heart" data-value="3"></span>
+                <span class="heart" data-value="4"></span>
+                <span class="heart" data-value="5"></span>
             </div>
         </div>
     </div>
-
 <center>
     <button onclick="calculateResults()">Ver Resultados</button>
 </center>
