@@ -9,100 +9,106 @@
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
 
     <style>
-        body, html {
-            height: 100%;
-            margin: 0;
-        
-            justify-content: center;
-            align-items: center;
-            background-image: url(images/MIND\ PULSE.png);
-            background-size: cover;
-            font-family: Arial, sans-serif;
-        }
-        #circle {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            background-color: #8ecae6;
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.5em;
+            height: 100vh;
+            background: linear-gradient(to right, #2E1B5B, #4e338e);
+            font-family: 'Arial', sans-serif;
             color: white;
-            transition: all 4s ease-in-out;
+            text-align: center;
         }
-        .breathing-text, .countdown {
-            margin: 10px;
-            font-size: 2em;
-            color: #fff;
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .instructions {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-family: "Pixelify Sans", sans-serif;
+        }
+
+        .circle {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2rem;
+            transition: all 1s ease;
+            font-family: "Pixelify Sans", sans-serif;
         }
     </style>
 </head>
 <body>
-
-    <br>
-    <br>
-    <br>
-    <center>
-    <div class="breathing-text" id="breathingText">Respira en</div>
-    <div class="countdown" id="countdown">3 2 1</div>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-
-    <div id="circle"></div>
-
-    </center>
+    <div class="container">
+        <div class="instructions" id="instructions">Prepárate...</div>
+        <div class="circle" id="circle">4</div>
+    </div>
 
     <script>
-        const circle = document.getElementById('circle');
-        const breathingText = document.getElementById('breathingText');
-        const countdown = document.getElementById('countdown');
-        let count = 3;
+        const steps = [
+            { instruction: "Aspirar profundamente durante 4 segundos.", time: 4000, action: "expand" },
+            { instruction: "Exhalar por la boca durante 4 segundos.", time: 4000, action: "shrink" },
+            { instruction: "Aspirar profundamente durante 4 segundos.", time: 4000, action: "expand" },
+            { instruction: "Retener el aire durante 4 segundos.", time: 4000, action: "hold" },
+            { instruction: "Soltar el aire durante 4 segundos.", time: 4000, action: "shrink" },
+            { instruction: "Poner el dedo anular en la fosa nasal izquierda e inhalar y exhalar profundamente durante 10 segundos.", time: 10000, action: "nostril-left" },
+            { instruction: "Esperar 4 segundos", time: 4000, action: "wait" },
+            { instruction: "Poner el dedo pulgar en la fosa nasal derecha e inhalar y exhalar profundamente durante 10 segundos.", time: 10000, action: "nostril-right" },
+            { instruction: "Esperar 4 segundos", time: 4000, action: "wait" }
+        ];
 
-        function breathe() {
-            breathingText.innerText = 'Inhalar en';
-            count = 3;
-            countdown.innerText = '3 2 1';
+        let currentStep = 0;
+        const instructionsElement = document.getElementById('instructions');
+        const circleElement = document.getElementById('circle');
 
-            const countdownInterval = setInterval(() => {
-                if (count > 1) {
-                    count--;
-                    countdown.innerText = countdown.innerText.slice(2);
-                } else {
-                    clearInterval(countdownInterval);
-                    breathingText.innerText = 'Inhalar hondo';
-                    countdown.innerText = '';
-                    circle.style.width = '200px';
-                    circle.style.height = '200px';
-                }
-            }, 1000);
-
-            setTimeout(() => {
-                breathingText.innerText = 'Exhala en';
-                count = 3;
-                countdown.innerText = '3 2 1';
-
-                const countdownInterval = setInterval(() => {
-                    if (count > 1) {
-                        count--;
-                        countdown.innerText = countdown.innerText.slice(2);
-                    } else {
-                        clearInterval(countdownInterval);
-                        breathingText.innerText = 'Exhala';
-                        countdown.innerText = '';
-                        circle.style.width = '100px';
-                        circle.style.height = '100px';
-                    }
-                }, 1000);
-            }, 4000);
+        function updateStep() {
+            if (currentStep < steps.length) {
+                const step = steps[currentStep];
+                instructionsElement.textContent = step.instruction;
+                startCountdown(step.time / 1000);
+                applyAction(step.action);
+                currentStep++;
+                setTimeout(updateStep, step.time);
+            } else {
+                instructionsElement.textContent = "Ejercicio completado. ¡Bien hecho!";
+                circleElement.textContent = "✔️";
+            }
         }
 
-        breathe();
-        setInterval(breathe, 8000);
+        function startCountdown(seconds) {
+            let counter = seconds;
+            circleElement.textContent = counter;
+            const interval = setInterval(() => {
+                counter--;
+                circleElement.textContent = counter;
+                if (counter <= 0) {
+                    clearInterval(interval);
+                }
+            }, 1000);
+        }
+
+        function applyAction(action) {
+            if (action === "expand") {
+                circleElement.style.transform = "scale(1.5)";
+            } else if (action === "shrink") {
+                circleElement.style.transform = "scale(1)";
+            } else if (action === "hold" || action === "wait") {
+                circleElement.style.transform = "scale(1.25)";
+            } else if (action === "nostril-left" || action === "nostril-right") {
+                circleElement.style.transform = "scale(1.25)";
+            }
+        }
+
+        setTimeout(updateStep, 1000);
     </script>
 </body>
 </html>
+ 
