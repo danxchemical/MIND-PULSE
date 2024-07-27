@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultados</title>
+    <link rel="stylesheet" href="resultados.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    
+    <h2>Resultados</h2>
+    <div class="question-container">
+    <center>
+
+    <div class="form-group" id="total-score"></div>
+    <div class="form-group" id="result-text"></div>
+
+    
+
+</center>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const totalScore = localStorage.getItem('totalScore');
+            const totalScoreDiv = document.getElementById('total-score');
+            const resultTextDiv = document.getElementById('result-text');
+            
+            let resultText = "";
+
+            if (totalScore < 25) {
+                resultText = "¡Estás manejando el estrés de manera fantástica! Aunque siempre hay espacio para mejorar, estás en el camino correcto. Sigue practicando tus técnicas de manejo del estrés y asegúrate de tomarte un tiempo para ti mismo cada día. La meditación, el ejercicio y el mantener una mentalidad positiva son claves para continuar con tu bienestar. ¡Sigue así!";
+            } else if (totalScore < 50) {
+                resultText = "Has estado haciendo un buen trabajo al manejar el estrés, pero todavía hay algunos aspectos que puedes mejorar. Recuerda que está bien pedir ayuda y buscar apoyo cuando lo necesites. Intenta incorporar más actividades que disfrutes en tu rutina diaria y no olvides la importancia de una buena noche de sueño. Pequeños cambios pueden tener un gran impacto en tu bienestar general. ¡Tú puedes hacerlo!";
+            } else if (totalScore < 75) {
+                resultText = "Es normal sentir estrés, y reconocerlo es el primer paso para manejarlo mejor. Considera hablar con un amigo, un familiar o un profesional sobre cómo te sientes. Practicar técnicas de relajación como la respiración profunda, el yoga o la meditación puede ser muy beneficioso. No estás solo en esto, y hay muchas herramientas disponibles para ayudarte a reducir tu nivel de estrés. Recuerda que cada paso hacia el bienestar es importante.";
+            } else {
+                resultText = "Has estado lidiando con mucho estrés últimamente, pero recuerda que es posible superarlo. Busca apoyo de personas cercanas a ti y no dudes en consultar con un profesional si sientes que lo necesitas. El autocuidado es esencial: asegúrate de tomar descansos, hacer ejercicio y alimentarte bien. Practica la gratitud y encuentra pequeñas cosas en tu vida por las cuales sentirte agradecido. Cada día es una nueva oportunidad para mejorar tu bienestar. ¡Eres más fuerte de lo que piensas!";
+            }
+
+            totalScoreDiv.textContent = `Porcentaje de Estres: ${totalScore}%`;
+            resultTextDiv.textContent = resultText;
+        });
+    </script>
+
+    <a href="respiración.html">Ejercicios de Respiración</a>
+</body>
+</html>
