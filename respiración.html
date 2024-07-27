@@ -4,15 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejercicio de Respiración</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet">
+
     <style>
         body, html {
             height: 100%;
             margin: 0;
-            display: flex;
-            flex-direction: column;
+        
             justify-content: center;
             align-items: center;
-            background-color: #f0f8ff;
+            background-image: url(images/MIND\ PULSE.png);
+            background-size: cover;
             font-family: Arial, sans-serif;
         }
         #circle {
@@ -30,11 +34,16 @@
         .breathing-text, .countdown {
             margin: 10px;
             font-size: 2em;
-            color: #023047;
+            color: #fff;
         }
     </style>
 </head>
 <body>
+
+    <br>
+    <br>
+    <br>
+    <center>
     <div class="breathing-text" id="breathingText">Respira en</div>
     <div class="countdown" id="countdown">3 2 1</div>
     <br>
@@ -45,6 +54,8 @@
     <br>
 
     <div id="circle"></div>
+
+    </center>
 
     <script>
         const circle = document.getElementById('circle');
